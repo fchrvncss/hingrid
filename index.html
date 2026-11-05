@@ -7,36 +7,38 @@
 <meta property="og:title" content="Aulas de Canto Hingrid Machado">
 <meta property="og:description" content="Aulas de canto presenciais e online com Hingrid Machado. Do zero, com músicas cristãs. Escolha seu horário e marque pelo WhatsApp.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%238E1245'/><text x='32' y='45' font-size='38' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>H</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2314327A'/><text x='32' y='45' font-size='38' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>H</text></svg>">
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Aulas de Canto Hingrid Machado</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Unbounded:wght@500;600;700;800&display=swap">
 <style>
-/* Layout: o topo é um palco framboesa, com tudo centralizado, a letra do lema acendendo palavra por palavra e um
-   equalizador subindo do chão. Os fatos da aula ficam em cartões que invadem o palco. O "monte sua aula" é um passo a
-   passo de quatro etapas, uma por vez. Rosa marca a aula presencial, âmbar marca a online.
+/* Layout: o topo é um palco azul, com tudo centralizado, notas subindo devagar ao fundo, as letras de "canto"
+   ondulando, a letra do lema acendendo palavra por palavra e um equalizador subindo do chão. Os fatos da aula ficam em
+   cartões que invadem o palco. O "monte sua aula" é um passo a passo de quatro etapas, uma por vez; cada escolha solta
+   uma nota. Azul marca a aula presencial, ciano marca a online; o amarelo fica só para o que é ação.
    No celular: botões do topo em grade, trilha com número em cima do nome, rodapé do passo a passo com o resumo
    em cima e os dois botões embaixo, e o WhatsApp flutuante vira só o ícone. */
 :root{
-  --fundo:#FFF7F1; --cartao:#FFFFFF; --tinta:#2B1024; --suave:#6E5566; --linha:#EFDDE2;
-  --pre:#C2185B; --onl:#B45309; --sobre-cor:#FFFFFF;
-  --palco:#8E1245; --palco-tinta:#FFF4F8; --palco-suave:#F3C3D4; --sol:#FFC233; --sol-tinta:#3A2500;
-  --wa:#25D366; --wa-tinta:#06301A; --erro:#B3261E; --sombra:rgba(43,16,36,.14);
+  --fundo:#F1F6FE; --cartao:#FFFFFF; --tinta:#0E1B3D; --suave:#52607F; --linha:#D5E0F3;
+  --pre:#1D4FD7; --onl:#0E7490; --sobre-cor:#FFFFFF;
+  --palco:#14327A; --palco-tinta:#F2F6FF; --palco-suave:#B9CCF5; --ceu:#8CC8FF; --aura:#86B6FF;
+  --sol:#FFC94D; --sol-tinta:#2A1E00;
+  --wa:#25D366; --wa-tinta:#06301A; --erro:#B3261E; --sombra:rgba(14,27,61,.14);
   --titulo:"Unbounded","Trebuchet MS","Segoe UI",system-ui,sans-serif;
   --corpo:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
   --t-1:.9375rem; --t0:1.0625rem; --t1:1.1875rem;
   --t3:clamp(1.5rem,2.2vw + .9rem,2.125rem); --t4:clamp(2.25rem,6vw + .8rem,4.75rem);
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --fundo:#1A0C16; --cartao:#27131F; --tinta:#FCEFF4; --suave:#CDAEBC; --linha:#43243A;
-  --pre:#FF6FA5; --onl:#FFB454; --sobre-cor:#2B0A1A;
-  --palco:#3B0F26; --palco-tinta:#FFF4F8; --palco-suave:#E5B4C6;
+  --fundo:#0A1022; --cartao:#131B36; --tinta:#EEF2FC; --suave:#A9B6D6; --linha:#273459;
+  --pre:#7DA6FF; --onl:#5FD4E8; --sobre-cor:#0A1022;
+  --palco:#0F2257; --palco-tinta:#F2F6FF; --palco-suave:#AFC3EE; --ceu:#7FBBF5; --aura:#2A4CA6;
   --erro:#FF8A80; --sombra:rgba(0,0,0,.45); color-scheme:dark } }
 :root[data-theme="dark"]{
-  --fundo:#1A0C16; --cartao:#27131F; --tinta:#FCEFF4; --suave:#CDAEBC; --linha:#43243A;
-  --pre:#FF6FA5; --onl:#FFB454; --sobre-cor:#2B0A1A;
-  --palco:#3B0F26; --palco-tinta:#FFF4F8; --palco-suave:#E5B4C6;
+  --fundo:#0A1022; --cartao:#131B36; --tinta:#EEF2FC; --suave:#A9B6D6; --linha:#273459;
+  --pre:#7DA6FF; --onl:#5FD4E8; --sobre-cor:#0A1022;
+  --palco:#0F2257; --palco-tinta:#F2F6FF; --palco-suave:#AFC3EE; --ceu:#7FBBF5; --aura:#2A4CA6;
   --erro:#FF8A80; --sombra:rgba(0,0,0,.45); color-scheme:dark }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -73,7 +75,25 @@ button,input,textarea{font:inherit}
 .abre .wrap{display:grid;justify-items:center;text-align:center;padding-block:clamp(24px,5vw,60px) 0}
 .sobret{font:700 .8125rem/1.3 var(--corpo);letter-spacing:.2em;text-transform:uppercase;color:var(--sol)}
 .abre h1{font:800 var(--t4)/1 var(--titulo);letter-spacing:-.045em;margin-top:14px}
-.abre h1 span{color:var(--sol)}
+.canta{color:var(--sol);white-space:nowrap}
+.canta i{display:inline-block;font-style:normal;animation:ondula 3.6s ease-in-out infinite}
+.canta i:nth-child(2){animation-delay:.18s}
+.canta i:nth-child(3){animation-delay:.36s}
+.canta i:nth-child(4){animation-delay:.54s}
+.canta i:nth-child(5){animation-delay:.72s}
+@keyframes ondula{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-.09em)}}
+.topo,.abre{position:relative;z-index:1}
+.sobem{position:absolute;inset:0;pointer-events:none}
+.sobem span{position:absolute;bottom:-40px;font:700 1.75rem/1 var(--corpo);color:var(--ceu);opacity:0;animation:flutua-nota 14s linear infinite}
+.sobem span:nth-child(1){left:6%;animation-delay:-2s}
+.sobem span:nth-child(2){left:20%;font-size:1.25rem;animation-delay:-9s;animation-duration:17s}
+.sobem span:nth-child(3){left:38%;font-size:1.125rem;animation-delay:-5s;animation-duration:19s}
+.sobem span:nth-child(4){left:63%;font-size:1.25rem;animation-delay:-12s;animation-duration:16s}
+.sobem span:nth-child(5){left:80%;animation-delay:-7s;animation-duration:18s}
+.sobem span:nth-child(6){left:93%;font-size:1.125rem;animation-delay:-1s;animation-duration:15s}
+@keyframes flutua-nota{0%{transform:translate(0,0) rotate(-8deg);opacity:0}12%{opacity:.34}50%{transform:translate(22px,-52vh) rotate(8deg)}85%{opacity:.22}100%{transform:translate(-10px,-105vh) rotate(-6deg);opacity:0}}
+.solta{position:fixed;z-index:30;margin:-18px 0 0 -8px;font:700 1.375rem/1 var(--corpo);color:var(--pre);pointer-events:none;animation:solta .9s ease-out forwards}
+@keyframes solta{0%{transform:translateY(0) scale(.6) rotate(-10deg);opacity:0}20%{opacity:1}100%{transform:translateY(-64px) scale(1.1) rotate(12deg);opacity:0}}
 .lead{font-size:var(--t1);line-height:1.45;color:var(--palco-suave);max-width:42ch;margin-top:16px}
 .letra{display:inline-flex;align-items:center;gap:12px;max-width:100%;margin-top:26px;padding:12px 20px;border:1.5px solid var(--palco-suave);border-radius:22px;background:transparent;color:inherit;font:600 var(--t1)/1.35 var(--corpo);text-align:left;cursor:pointer}
 .verso .w{display:inline-block;transition:color .5s ease,opacity .5s ease,transform .5s ease}
@@ -85,8 +105,8 @@ button,input,textarea{font:inherit}
 .mini i:nth-child(3){animation-delay:-1.6s}
 .abre .acoes{justify-content:center;margin-top:26px}
 .eq{display:grid;grid-auto-flow:column;grid-auto-columns:8px;gap:6px;justify-content:center;align-items:end;height:120px;margin-top:clamp(28px,4vw,44px);overflow:hidden}
-.eq i{display:block;height:100%;border-radius:6px 6px 0 0;background:var(--sol);transform-origin:bottom;transform:scaleY(var(--h,.5));animation:eq var(--d,1s) ease-in-out var(--a,0s) infinite}
-.eq i:nth-child(3n){background:var(--palco-suave)}
+.eq i{display:block;height:100%;border-radius:6px 6px 0 0;background:var(--ceu);transform-origin:bottom;transform:scaleY(var(--h,.5));animation:eq var(--d,1s) ease-in-out var(--a,0s) infinite}
+.eq i:nth-child(4n){background:var(--sol)}
 @keyframes eq{0%,100%{transform:scaleY(calc(var(--h,1)*.38))}50%{transform:scaleY(var(--h,1))}}
 
 .fatos{position:relative;z-index:1;margin-top:-40px}
@@ -108,7 +128,8 @@ button,input,textarea{font:inherit}
 .trilha i{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--linha);color:var(--tinta);font-style:normal;font-size:.8125rem;flex:none}
 .trilha button.feito i{background:var(--tinta);color:var(--fundo)}
 .trilha button[aria-current="step"]{color:var(--tinta);border-bottom-color:var(--pre)}
-.trilha button[aria-current="step"] i{background:var(--pre);color:var(--sobre-cor)}
+.trilha button[aria-current="step"] i{background:var(--pre);color:var(--sobre-cor);animation:batida 2.4s ease-out infinite}
+@keyframes batida{0%{box-shadow:0 0 0 0 var(--pre)}70%,100%{box-shadow:0 0 0 10px transparent}}
 @media (max-width:560px){.trilha button{flex-direction:column;gap:4px;min-height:64px;padding:8px 2px;font-size:.75rem;line-height:1.1}}
 .etapa{display:grid;gap:14px;align-content:start;min-height:250px;padding:24px clamp(16px,3vw,28px);animation:surge .35s ease}
 .etapa>h3{font:700 1.0625rem/1.3 var(--titulo);letter-spacing:-.03em}
@@ -140,11 +161,6 @@ button,input,textarea{font:inherit}
 .chip.especial[aria-pressed="true"]{border-style:solid;border-color:var(--tinta)}
 .vazio{color:var(--suave)}
 .rot{font:700 .75rem/1.3 var(--corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--suave)}
-.areas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:5px;border-radius:999px;background:var(--fundo);border:1.5px solid var(--linha)}
-@media (min-width:620px){.areas{max-width:520px}}
-.chip.area{min-width:0;padding:8px 4px;border-color:transparent;background:transparent;font-weight:700;text-align:center}
-@media (hover:hover){.chip.area:hover{transform:none;border-color:var(--linha)}}
-.chip.area[aria-pressed="true"]{background:var(--pre);border-color:var(--pre);color:var(--sobre-cor)}
 .temas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .temas.surge{animation:surge .35s ease}
 @media (min-width:620px){.temas{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -173,6 +189,13 @@ button,input,textarea{font:inherit}
 .ok svg{width:64px;height:64px;fill:none;stroke:var(--pre);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .ok svg path{stroke-dasharray:30;stroke-dashoffset:30;animation:risca .5s ease .25s forwards}
 @keyframes risca{to{stroke-dashoffset:0}}
+.ok{position:relative}
+.festa{position:absolute;left:50%;top:26px;width:0;height:0}
+.festa i{position:absolute;font:700 1.25rem/1 var(--corpo);font-style:normal;color:var(--onl);opacity:0;animation:festa 1.6s ease-out .5s forwards}
+.festa i:nth-child(1){--x:-58px;--y:-34px}
+.festa i:nth-child(2){--x:52px;--y:-44px;color:var(--pre);animation-delay:.65s}
+.festa i:nth-child(3){--x:70px;--y:8px;animation-delay:.8s}
+@keyframes festa{0%{transform:translate(0,0) scale(.4);opacity:0}25%{opacity:1}100%{transform:translate(var(--x),var(--y)) scale(1.1) rotate(14deg);opacity:.85}}
 .ok p{max-width:38ch;color:var(--suave)}
 .ok b{color:var(--tinta);font-variant-numeric:tabular-nums;white-space:nowrap}
 .campo ::placeholder{color:var(--suave);opacity:.8}
@@ -197,7 +220,6 @@ button,input,textarea{font:inherit}
   #voltar[style*="hidden"]{display:none}
   #avancar{flex:1}
   .chip{padding:8px 13px;font-size:.875rem}
-  .chip.area{padding:8px 4px}
   .campos .acoes{display:grid}
   .cracha{font-size:.8125rem;padding:9px 14px}
 }
@@ -219,7 +241,7 @@ button,input,textarea{font:inherit}
 .sobre .acoes{margin-top:20px}
 .retrato{position:relative;justify-self:center;width:min(94%,440px);aspect-ratio:851/846}
 @media (max-width:859px){.retrato{order:-1}}
-.aura{position:absolute;left:4%;top:-2%;width:92%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,var(--sol) 30%,transparent 100%);animation:respira 9s ease-in-out infinite}
+.aura{position:absolute;left:4%;top:-2%;width:92%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,var(--aura) 30%,transparent 100%);animation:respira 9s ease-in-out infinite}
 @keyframes respira{0%,100%{transform:scale(.93);opacity:.7}50%{transform:scale(1.05);opacity:1}}
 .onda{position:absolute;left:14%;top:8%;width:72%;aspect-ratio:1;border:2.5px solid var(--pre);border-radius:50%;opacity:0;animation:onda 7.5s ease-out infinite}
 .onda.o2{border-color:var(--onl);animation-delay:2.5s}
@@ -244,10 +266,10 @@ button,input,textarea{font:inherit}
 .msg.bot-m{align-self:flex-start;background:var(--fundo);border:1.5px solid var(--linha);border-bottom-left-radius:4px}
 .msg.eu{align-self:flex-end;background:var(--tinta);color:var(--fundo);border-bottom-right-radius:4px}
 .msg .btn{display:flex;width:max-content;max-width:100%;margin-top:10px}
-.digitando{display:inline-flex;gap:4px;align-items:center;height:20px}
-.digitando i{width:7px;height:7px;border-radius:50%;background:var(--suave);animation:pula 1s ease-in-out infinite}
-.digitando i:nth-child(2){animation-delay:.15s}
-.digitando i:nth-child(3){animation-delay:.3s}
+.digitando{display:inline-flex;gap:3px;align-items:center;height:20px}
+.digitando i{width:4px;height:100%;border-radius:999px;background:var(--pre);transform:scaleY(.35);animation:eq 1.1s ease-in-out infinite}
+.digitando i:nth-child(2){animation-delay:-.35s}
+.digitando i:nth-child(3){animation-delay:-.7s}
 @keyframes pula{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
 .bot .chips{padding:0 18px 16px}
 .bot-envio{display:flex;gap:8px;padding:14px 18px;border-top:1.5px solid var(--linha)}
@@ -271,6 +293,7 @@ button,input,textarea{font:inherit}
 </head>
 <body>
 <div class="palco" id="inicio">
+  <div class="sobem" aria-hidden="true"><span>♪</span><span>♫</span><span>♩</span><span>♪</span><span>♬</span><span>♫</span></div>
   <header class="topo">
     <div class="wrap">
       <a class="marca" href="#inicio"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 6v17M25 6v17M12 14h13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="8.6" cy="23.6" rx="4.2" ry="3.1" transform="rotate(-20 8.6 23.6)" fill="currentColor"/><ellipse cx="21.6" cy="23.6" rx="4.2" ry="3.1" transform="rotate(-20 21.6 23.6)" fill="currentColor"/></svg>Hingrid Machado</a>
@@ -286,16 +309,16 @@ button,input,textarea{font:inherit}
   <section class="abre">
     <div class="wrap">
       <p class="sobret">Presenciais e online</p>
-      <h1>Aulas de <span>canto</span></h1>
-      <p class="lead">Com a Hingrid Machado. Do zero, cantando músicas cristãs. Também piano, violão e sanfona.</p>
+      <h1 aria-label="Aulas de canto">Aulas de <span class="canta" aria-hidden="true"><i>c</i><i>a</i><i>n</i><i>t</i><i>o</i></span></h1>
+      <p class="lead">Com a Hingrid Machado. Do zero, cantando músicas cristãs.</p>
       <button type="button" class="letra" id="letra" aria-label="Cante com fé, expresse sua voz e adoce sua alma. Toque para recomeçar a animação.">
         <span class="mini" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="verso" id="verso" aria-hidden="true"><span class="w">Cante</span> <span class="w">com</span> <span class="w" data-pausa="1">fé,</span> <span class="w">expresse</span> <span class="w">sua</span> <span class="w" data-pausa="1">voz</span> <span class="w">e</span> <span class="w">adoce</span> <span class="w">sua</span> <span class="w">alma.</span></span>
       </button>
       <div class="acoes">
         <a class="btn btn-sol" href="#monte">Montar minha aula</a>
-        <a class="btn btn-palco" data-msg="Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto." href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
-        <a class="btn btn-palco" href="https://www.instagram.com/hingrid27/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+        <a class="btn btn-palco" data-msg="Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto." href="https://wa.me/5527997929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
+        <a class="btn btn-palco" href="https://www.instagram.com/hingrid_machadocanto/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
       </div>
     </div>
     <div class="eq" id="eq" aria-hidden="true"></div>
@@ -345,8 +368,7 @@ button,input,textarea{font:inherit}
       </div>
 
       <div class="etapa" data-etapa="2" hidden>
-        <h3>O que você quer aprender?</h3>
-        <div class="areas" id="areas" role="group" aria-label="Canto ou instrumento"></div>
+        <h3>O que você quer trabalhar no canto?</h3>
         <div class="temas" id="temas" role="group" aria-label="Tema da aula"></div>
         <p class="rot" id="sub-dica" hidden>Marque o que quer trabalhar</p>
         <div class="chips" id="subtemas" hidden></div>
@@ -382,16 +404,17 @@ button,input,textarea{font:inherit}
           <p class="erro" id="erro" role="alert" hidden></p>
           <div class="acoes">
             <button type="button" class="btn btn-1 so-site" id="enviar-site" hidden>Enviar pedido</button>
-            <a class="btn btn-wa" id="enviar" href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>Enviar pelo WhatsApp</a>
+            <a class="btn btn-wa" id="enviar" href="https://wa.me/5527997929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>Enviar pelo WhatsApp</a>
           </div>
           <p class="aviso so-site" hidden>A Hingrid analisa o pedido e confirma a aula pelo seu WhatsApp.</p>
           <p class="aviso so-wa">O WhatsApp abre com o pedido pronto. É só enviar. A Hingrid confirma por lá.</p>
         </div>
         <div class="ok" id="pedido-ok" tabindex="-1" hidden>
           <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M14.500 24.500l6.500 6.500 12.500-13.500"/></svg>
+          <span class="festa" aria-hidden="true"><i>♪</i><i>♫</i><i>♪</i></span>
           <h3>Pedido enviado!</h3>
           <p>A Hingrid vai analisar e confirmar a aula pelo WhatsApp <b id="ok-fone"></b>.</p>
-          <a class="btn btn-2 btn-p" data-msg="Olá, Hingrid! Acabei de enviar um pedido de aula pelo site." href="https://wa.me/5527998929051" target="_blank" rel="noopener">Falar com a Hingrid agora</a>
+          <a class="btn btn-2 btn-p" data-msg="Olá, Hingrid! Acabei de enviar um pedido de aula pelo site." href="https://wa.me/5527997929051" target="_blank" rel="noopener">Falar com a Hingrid agora</a>
         </div>
       </form>
 
@@ -401,7 +424,7 @@ button,input,textarea{font:inherit}
         <button type="button" class="btn btn-1 btn-p" id="avancar">Continuar</button>
       </div>
     </div>
-    <p class="direto">Prefere combinar por mensagem? <a data-msg="Olá, Hingrid! Quero fazer aula e prefiro combinar os detalhes com você." href="https://wa.me/5527998929051" target="_blank" rel="noopener">Converse direto com a Hingrid</a>.</p>
+    <p class="direto">Prefere combinar por mensagem? <a data-msg="Olá, Hingrid! Quero fazer aula e prefiro combinar os detalhes com você." href="https://wa.me/5527997929051" target="_blank" rel="noopener">Converse direto com a Hingrid</a>.</p>
   </div>
 </section>
 
@@ -410,7 +433,7 @@ button,input,textarea{font:inherit}
     <div>
       <h2>Sobre a professora</h2>
       <p class="frase">Uma vida inteira na música.</p>
-      <p class="linha">A Hingrid canta desde sempre e tem muita prática com:</p>
+      <p class="linha">A Hingrid canta desde sempre e tem muita prática com instrumentos. Nas aulas, o foco é só o canto.</p>
       <ul class="instrumentos">
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg>Canto</li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M7.25 13v6M12 13v6M16.75 13v6M6 5v8h2.5V5M10.75 5v8h2.5V5M15.5 5v8H18V5"/></svg>Piano</li>
@@ -418,14 +441,14 @@ button,input,textarea{font:inherit}
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="5.5" height="14" rx="1.2"/><rect x="16" y="5" width="5.5" height="14" rx="1.2"/><path d="M8 6.5l2 1.2 2-1.2 2 1.2 2-1.2M8 17.5l2-1.2 2 1.2 2-1.2 2 1.2M10 7.7v8.6M12 6.5v11M14 7.7v8.6M4.4 8.5h1.7M4.4 11h1.7M4.4 13.5h1.7M4.4 16h1.7"/><circle cx="18.75" cy="9" r=".6"/><circle cx="18.75" cy="12" r=".6"/><circle cx="18.75" cy="15" r=".6"/></svg>Sanfona</li>
       </ul>
       <div class="acoes">
-        <a class="btn btn-2 btn-p" href="https://www.instagram.com/hingrid27/" target="_blank" rel="noopener">Instagram @hingrid27</a>
+        <a class="btn btn-2 btn-p" href="https://www.instagram.com/hingrid_machadocanto/" target="_blank" rel="noopener">Instagram @hingrid_machadocanto</a>
       </div>
     </div>
     <div class="retrato">
       <span class="aura" aria-hidden="true"></span><span class="onda" aria-hidden="true"></span><span class="onda o2" aria-hidden="true"></span><span class="onda o3" aria-hidden="true"></span>
       <img class="foto" src="fotos/hingrid-professora.webp" alt="Hingrid Machado" width="851" height="846">
       <span class="nota n1" aria-hidden="true">♪</span><span class="nota n2" aria-hidden="true">♫</span><span class="nota n3" aria-hidden="true">♪</span>
-      <p class="cracha"><b>Hingrid Machado</b>professora de música</p>
+      <p class="cracha"><b>Hingrid Machado</b>professora de canto</p>
     </div>
   </div>
 </section>
@@ -450,16 +473,16 @@ button,input,textarea{font:inherit}
 
 <footer class="fim">
   <div class="wrap">
-    <span>Hingrid Machado · aulas de canto, piano, violão e sanfona · presenciais e online</span>
-    <span>WhatsApp <b>(27) 99892-9051</b> · <a href="https://www.instagram.com/hingrid27/" target="_blank" rel="noopener">Instagram @hingrid27</a></span>
+    <span>Hingrid Machado · aulas de canto presenciais e online</span>
+    <span>WhatsApp <b>(27) 99792-9051</b> · <a href="mailto:hingridmachado34@gmail.com">hingridmachado34@gmail.com</a> · <a href="https://www.instagram.com/hingrid_machadocanto/" target="_blank" rel="noopener">Instagram @hingrid_machadocanto</a></span>
   </div>
 </footer>
 
-<a class="btn btn-wa flutua" aria-label="Falar com a Hingrid no WhatsApp" data-msg="Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto." href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg><span>WhatsApp</span></a>
+<a class="btn btn-wa flutua" aria-label="Falar com a Hingrid no WhatsApp" data-msg="Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto." href="https://wa.me/5527997929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg><span>WhatsApp</span></a>
 <script>
 (function(){
   // ===== Dados para trocar =====
-  var WHATSAPP = "5527998929051";   // 55 + DDD + número, só algarismos
+  var WHATSAPP = "5527997929051";   // 55 + DDD + número, só algarismos
   var ENVIO = "";                   // endereço do Apps Script da planilha de pedidos. Vazio = o pedido vai só pelo WhatsApp.
   var TIPOS = {
     presencial: { rotulo: "Presencial individual", curto: "Presencial", frase: "presencial individual (R$ 120 por mês)", preco: "R$ 120", nota: "por mês",
@@ -478,35 +501,15 @@ button,input,textarea{font:inherit}
       ] },
     grupo: { rotulo: "Em grupo (presencial)", curto: "Em grupo", frase: "em grupo, presencial", preco: "Sob consulta", nota: "", dias: [] }
   };
-  // O que a pessoa pode pedir: área > tema > subtemas
-  var AREAS = [
-    { id: "canto", nome: "Canto", temas: [
-      { id: "zero",      nome: "Começar do zero",       sub: ["Respiração e apoio", "Postura para cantar", "Afinação básica", "Perder a vergonha de cantar", "Primeira música completa"] },
-      { id: "tecnica",   nome: "Técnica vocal",         sub: ["Respiração diafragmática", "Afinação e ouvido", "Agudos sem forçar", "Graves com corpo", "Voz de peito, cabeça e mista", "Passagem (quebra da voz)", "Potência e projeção", "Vibrato", "Melismas e ornamentos", "Dicção e articulação"] },
-      { id: "louvor",    nome: "Louvor e ministério",   sub: ["Cantar na igreja", "Conduzir o louvor", "Back vocal", "Segunda voz e harmonia", "Escolher o tom da música", "Hinos e corinhos"] },
-      { id: "palco",     nome: "Interpretação e palco", sub: ["Interpretação e emoção", "Uso do microfone", "Presença de palco", "Nervosismo e timidez", "Cantar com playback ou banda"] },
-      { id: "saude",     nome: "Cuidados com a voz",    sub: ["Aquecimento e desaquecimento", "Cantar sem cansar", "Rotina de treino em casa", "Cuidados antes de cantar"] },
-      { id: "teoria",    nome: "Ritmo e percepção",     sub: ["Ritmo e tempo", "Solfejo básico", "Leitura de cifra", "Harmonia vocal"] },
-      { id: "objetivo",  nome: "Objetivo específico",   sub: ["Preparar uma música para apresentação", "Casamento ou evento", "Gravação", "Teste para coral ou grupo", "Aumentar a extensão vocal", "Cantar e tocar ao mesmo tempo"] }
-    ] },
-    { id: "piano", nome: "Piano", temas: [
-      { id: "zero",     nome: "Começar do zero",  sub: ["Postura e posição das mãos", "Notas e teclas", "Primeiras melodias", "Primeira música completa"] },
-      { id: "acomp",    nome: "Acompanhamento",   sub: ["Acordes e cifras", "Ritmos para louvor", "Tocar e cantar", "Introduções e finais"] },
-      { id: "tecnica",  nome: "Técnica",          sub: ["Escalas e dedilhado", "Independência das mãos", "Leitura de partitura", "Uso do pedal"] },
-      { id: "repert",   nome: "Repertório",       sub: ["Hinos", "Louvores", "Tirar música de ouvido", "Preparar uma música específica"] }
-    ] },
-    { id: "violao", nome: "Violão", temas: [
-      { id: "zero",     nome: "Começar do zero",  sub: ["Afinar o violão", "Primeiros acordes", "Troca de acordes", "Primeira música completa"] },
-      { id: "ritmo",    nome: "Ritmo e batidas",  sub: ["Batidas para louvor", "Dedilhado", "Levadas e variações", "Tocar no tempo"] },
-      { id: "harmonia", nome: "Harmonia",         sub: ["Leitura de cifra", "Pestana", "Mudar o tom da música", "Uso do capotraste"] },
-      { id: "repert",   nome: "Tocar e cantar",   sub: ["Coordenar voz e violão", "Hinos e louvores", "Preparar uma música específica"] }
-    ] },
-    { id: "sanfona", nome: "Sanfona", temas: [
-      { id: "zero",     nome: "Começar do zero",  sub: ["Postura e uso do fole", "Mão direita (teclado)", "Mão esquerda (baixos)", "Primeira música completa"] },
-      { id: "tecnica",  nome: "Técnica",          sub: ["Controle do fole", "Independência das mãos", "Escalas e agilidade"] },
-      { id: "ritmo",    nome: "Ritmos e levadas", sub: ["Ritmos para louvor", "Valsa e ritmos lentos", "Ritmos regionais"] },
-      { id: "repert",   nome: "Repertório",       sub: ["Hinos", "Louvores", "Preparar uma música específica"] }
-    ] }
+  // O que a pessoa pode pedir: tema > subtemas (só canto)
+  var TEMAS = [
+    { id: "zero",      nome: "Começar do zero",       sub: ["Respiração e apoio", "Postura para cantar", "Afinação básica", "Perder a vergonha de cantar", "Primeira música completa"] },
+    { id: "tecnica",   nome: "Técnica vocal",         sub: ["Respiração diafragmática", "Afinação e ouvido", "Agudos sem forçar", "Graves com corpo", "Voz de peito, cabeça e mista", "Passagem (quebra da voz)", "Potência e projeção", "Vibrato", "Melismas e ornamentos", "Dicção e articulação"] },
+    { id: "louvor",    nome: "Louvor e ministério",   sub: ["Cantar na igreja", "Conduzir o louvor", "Back vocal", "Segunda voz e harmonia", "Escolher o tom da música", "Hinos e corinhos"] },
+    { id: "palco",     nome: "Interpretação e palco", sub: ["Interpretação e emoção", "Uso do microfone", "Presença de palco", "Nervosismo e timidez", "Cantar com playback ou banda"] },
+    { id: "saude",     nome: "Cuidados com a voz",    sub: ["Aquecimento e desaquecimento", "Cantar sem cansar", "Rotina de treino em casa", "Cuidados antes de cantar"] },
+    { id: "teoria",    nome: "Ritmo e percepção",     sub: ["Ritmo e tempo", "Entrar na hora certa", "Solfejo básico", "Harmonia vocal"] },
+    { id: "objetivo",  nome: "Objetivo específico",   sub: ["Preparar uma música para apresentação", "Casamento ou evento", "Gravação", "Teste para coral ou grupo", "Aumentar a extensão vocal"] }
   ];
 
   function $(id){ return document.getElementById(id); }
@@ -522,9 +525,8 @@ button,input,textarea{font:inherit}
   todos("a[data-msg]").forEach(function(a){ a.href = linkWa(a.dataset.msg); });
 
   // ----- monte sua aula: passo a passo -----
-  var estado = { etapa: 0, tipo: null, dia: "", hora: "", outro: false, area: "canto", tema: null, subs: [], conversar: false };
-  function area(){ return AREAS.filter(function(a){ return a.id === estado.area; })[0]; }
-  function tema(){ return area().temas.filter(function(t){ return t.id === estado.tema; })[0] || null; }
+  var estado = { etapa: 0, tipo: null, dia: "", hora: "", outro: false, tema: null, subs: [], conversar: false };
+  function tema(){ return TEMAS.filter(function(t){ return t.id === estado.tema; })[0] || null; }
 
   function irPara(n, rolar){
     estado.etapa = Math.max(0, Math.min(3, n));
@@ -575,17 +577,9 @@ button,input,textarea{font:inherit}
     var caixa = document.createElement("div"); caixa.className = "chips"; caixa.appendChild(outro); c.appendChild(caixa);
   }
 
-  AREAS.forEach(function(a){
-    var b = chip("chip area", a.nome); b.dataset.area = a.id;
-    b.addEventListener("click", function(){
-      estado.area = a.id; estado.tema = null; estado.subs = [];
-      desenharTemas(); desenharSubtemas(); atualizar();
-    });
-    $("areas").appendChild(b);
-  });
   function desenharTemas(){
     var c = $("temas"); c.textContent = "";
-    area().temas.forEach(function(t){
+    TEMAS.forEach(function(t){
       var b = chip("tile", ""), nome = document.createElement("b");
       nome.textContent = t.nome; b.appendChild(nome); b.dataset.tema = t.id;
       b.addEventListener("click", function(){
@@ -625,14 +619,14 @@ button,input,textarea{font:inherit}
   }
   function temaTexto(){
     var t = tema();
-    if (estado.conversar) return area().nome + " · conversar antes com a Hingrid";
-    if (!t) return area().nome;
-    return area().nome + " · " + t.nome + (estado.subs.length ? ": " + estado.subs.join(", ") : "");
+    if (estado.conversar) return "Conversar antes com a Hingrid";
+    if (!t) return "A combinar";
+    return t.nome + (estado.subs.length ? ": " + estado.subs.join(", ") : "");
   }
   function mensagem(){
     var tp = TIPOS[estado.tipo], t = tema(), nome = $("f-nome").value.trim(), desc = $("f-desc").value.trim();
     var l = ["Olá, Hingrid! Meu nome é " + (nome || "[seu nome]") + "."];
-    l.push("Quero fazer aula de " + area().nome.toLowerCase() + (tp ? " " + tp.frase : "") + ".");
+    l.push("Quero fazer aula de canto" + (tp ? " " + tp.frase : "") + ".");
     if (estado.tipo === "grupo") l.push("Quero saber o valor e os horários do grupo.");
     else if (estado.hora){ l.push("Horário que prefiro: " + estado.dia + ", " + estado.hora + "."); l.push("Esse horário ainda está livre?"); }
     else if (estado.outro) l.push("Preciso combinar outro horário.");
@@ -656,7 +650,6 @@ button,input,textarea{font:inherit}
       var ligado = b.dataset.outro ? estado.outro : (b.dataset.dia === estado.dia && b.dataset.hora === estado.hora);
       b.setAttribute("aria-pressed", ligado ? "true" : "false");
     });
-    todos("#areas .chip").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.area === estado.area ? "true" : "false"); });
     todos("#temas .tile").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.tema === estado.tema ? "true" : "false"); });
     todos("#subtemas .chip").forEach(function(b){ b.setAttribute("aria-pressed", estado.subs.indexOf(b.dataset.sub) >= 0 ? "true" : "false"); });
     $("conversar").setAttribute("aria-pressed", estado.conversar ? "true" : "false");
@@ -664,7 +657,7 @@ button,input,textarea{font:inherit}
     var partes = [];
     if (tp) partes.push(tp.curto + (tp.nota ? " · " + tp.preco + " " + tp.nota : ""));
     if (horaTexto() !== "—" && estado.tipo !== "grupo") partes.push(horaTexto());
-    partes.push(area().nome + (t ? " · " + t.nome : ""));
+    if (t) partes.push(t.nome); else if (estado.conversar) partes.push("Conversar antes");
     var linha = $("linha-resumo"), forte = document.createElement("b");
     linha.textContent = ""; forte.textContent = partes.join("  ·  "); linha.appendChild(forte);
     linha.hidden = estado.etapa === 3;   // no último passo o resumo completo já está na tela
@@ -738,6 +731,20 @@ button,input,textarea{font:inherit}
     });
   }
 
+  // ----- cada escolha solta uma nota -----
+  var NOTAS = ["♪", "♫", "♩", "♬"];
+  document.addEventListener("click", function(e){
+    var alvo = e.target.closest ? e.target.closest(".mago .tile, .mago .chip, #bot-chips .chip") : null;
+    if (!alvo || calmo()) return;
+    var n = document.createElement("span"), caixa = alvo.getBoundingClientRect();
+    n.className = "solta"; n.setAttribute("aria-hidden", "true");
+    n.textContent = NOTAS[Math.floor(Math.random() * NOTAS.length)];
+    n.style.left = (e.clientX || caixa.left + caixa.width / 2) + "px";
+    n.style.top = (e.clientY || caixa.top) + "px";
+    document.body.appendChild(n);
+    n.addEventListener("animationend", function(){ n.remove(); });
+  });
+
   // ----- equalizador no chão do palco -----
   var eq = $("eq");
   for (var i = 0; i < 150; i++){
@@ -777,9 +784,8 @@ button,input,textarea{font:inherit}
     { q: "Tem aula em grupo?", k: /grupo|dupla|turma|junto|amig/,
       r: "Tem aula em grupo, presencial. O valor e o horário a Hingrid combina pelo WhatsApp.",
       wa: "Olá, Hingrid! Quero saber o valor e os horários da aula de canto em grupo (presencial).", rot: "Perguntar no WhatsApp" },
-    { q: "Tem aula de instrumento?", k: /piano|teclado|violao|sanfona|acordeon|instrument|tocar/,
-      r: "Além de canto, dá para pedir aula de piano, violão e sanfona. Em Monte sua aula você escolhe o instrumento e o tema.",
-      ir: "#monte", rot: "Escolher o tema" },
+    { q: "Tem aula de instrumento?", oculto: true, k: /piano|teclado|violao|sanfona|acordeon|instrument|tocar/,
+      r: "As aulas da Hingrid são só de canto." },
     { q: "O que eu aprendo?", k: /aprend|tema|conteudo|tecnica|respira|afina|agudo|microfone|timidez|vibrato/,
       r: "Você escolhe: começar do zero, técnica vocal, louvor e ministério, interpretação e palco, cuidados com a voz, ritmo e percepção ou um objetivo específico. E pode descrever do seu jeito o que procura.",
       ir: "#monte", rot: "Escolher o tema" },
@@ -790,6 +796,9 @@ button,input,textarea{font:inherit}
     { q: "Como eu começo?", k: /comec|marcar|agendar|matricul|inscri/,
       r: "Monte sua aula: escolha o tipo, o horário e o tema, e envie o pedido. A Hingrid confirma pelo WhatsApp.",
       ir: "#monte", rot: "Montar minha aula" },
+    { q: "Como falo com a Hingrid?", k: /contato|telefone|numero|email|e-mail|falar|whats|instagram|insta/,
+      r: "Pelo WhatsApp (27) 99792-9051, pelo e-mail hingridmachado34@gmail.com ou pelo Instagram @hingrid_machadocanto.",
+      wa: "Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto.", rot: "Abrir o WhatsApp" },
     { q: "Onde é a aula?", k: /onde|endereco|local|cidade|bairro|presencial|online|video/,
       r: "As aulas são presenciais ou online. O endereço da aula presencial a Hingrid passa pelo WhatsApp.",
       wa: "Olá, Hingrid! Onde são as aulas presenciais?", rot: "Perguntar o endereço" }
@@ -821,6 +830,7 @@ button,input,textarea{font:inherit}
   }
   balao("bot-m", "Oi! Sou o assistente automático da " + BOT_NOME + ". Toque em uma dúvida ou escreva a sua.");
   BOT.forEach(function(item){
+    if (item.oculto) return;   // responde quando perguntam, mas não vira botão
     var b = document.createElement("button");
     b.type = "button"; b.className = "chip"; b.textContent = item.q;
     b.addEventListener("click", function(){ balao("eu", item.q); responder(item, item.q); });
