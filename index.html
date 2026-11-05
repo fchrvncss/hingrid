@@ -15,7 +15,9 @@
 <style>
 /* Layout: o topo é um palco framboesa, com tudo centralizado, a letra do lema acendendo palavra por palavra e um
    equalizador subindo do chão. Os fatos da aula ficam em cartões que invadem o palco. O "monte sua aula" é um passo a
-   passo de quatro etapas, uma por vez. Rosa marca a aula presencial, âmbar marca a online. */
+   passo de quatro etapas, uma por vez. Rosa marca a aula presencial, âmbar marca a online.
+   No celular: botões do topo em grade, trilha com número em cima do nome, rodapé do passo a passo com o resumo
+   em cima e os dois botões embaixo, e o WhatsApp flutuante vira só o ícone. */
 :root{
   --fundo:#FFF7F1; --cartao:#FFFFFF; --tinta:#2B1024; --suave:#6E5566; --linha:#EFDDE2;
   --pre:#C2185B; --onl:#B45309; --sobre-cor:#FFFFFF;
@@ -43,13 +45,13 @@ body{margin:0;background:var(--fundo);color:var(--tinta);font:400 var(--t0)/1.55
 h1,h2,h3,p,dl,ul,ol{margin:0}
 h1,h2{text-wrap:balance}
 a{color:inherit}
-button{font:inherit}
+button,input,textarea{font:inherit}
 .wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 :focus-visible{outline:3px solid var(--pre);outline-offset:3px;border-radius:6px}
 .palco :focus-visible,.fim :focus-visible{outline-color:var(--sol)}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:13px 22px;border-radius:999px;font:700 1rem/1.15 var(--corpo);text-decoration:none;text-align:center;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease}
-.btn:hover{transform:translateY(-2px)}
+@media (hover:hover){.btn:hover{transform:translateY(-2px)}}
 .btn svg{flex:none}
 .btn-1{background:var(--tinta);color:var(--fundo)}
 .btn-2{border-color:var(--tinta);background:transparent;color:var(--tinta)}
@@ -65,7 +67,7 @@ button{font:inherit}
 .marca svg{width:30px;height:30px;flex:none;color:var(--sol)}
 .menu{display:flex;align-items:center;gap:8px clamp(14px,2.2vw,26px);flex-wrap:wrap;font-weight:600;font-size:var(--t-1)}
 .menu a{text-decoration:none}
-.menu a:not(.btn):hover{color:var(--sol)}
+@media (hover:hover){.menu a:not(.btn):hover{color:var(--sol)}}
 @media (max-width:760px){.menu a:not(.btn){display:none}}
 
 .abre .wrap{display:grid;justify-items:center;text-align:center;padding-block:clamp(24px,5vw,60px) 0}
@@ -107,7 +109,7 @@ button{font:inherit}
 .trilha button.feito i{background:var(--tinta);color:var(--fundo)}
 .trilha button[aria-current="step"]{color:var(--tinta);border-bottom-color:var(--pre)}
 .trilha button[aria-current="step"] i{background:var(--pre);color:var(--sobre-cor)}
-@media (max-width:560px){.trilha button:not([aria-current="step"]) span{display:none}}
+@media (max-width:560px){.trilha button{flex-direction:column;gap:4px;min-height:64px;padding:8px 2px;font-size:.75rem;line-height:1.1}}
 .etapa{display:grid;gap:14px;align-content:start;min-height:250px;padding:24px clamp(16px,3vw,28px);animation:surge .35s ease}
 .etapa>h3{font:700 1.0625rem/1.3 var(--titulo);letter-spacing:-.03em}
 @keyframes surge{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -119,7 +121,7 @@ button{font:inherit}
 .tile small{font-size:.875rem;line-height:1.3;color:var(--suave)}
 .tile.pre{border-color:var(--pre)}
 .tile.onl{border-color:var(--onl)}
-.tile:hover{transform:translateY(-2px);border-color:var(--tinta)}
+@media (hover:hover){.tile:hover{transform:translateY(-2px);border-color:var(--tinta)}}
 .tile[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:var(--fundo);animation:pop .3s ease}
 .tile.pre[aria-pressed="true"]{background:var(--pre);border-color:var(--pre);color:var(--sobre-cor)}
 .tile.onl[aria-pressed="true"]{background:var(--onl);border-color:var(--onl);color:var(--sobre-cor)}
@@ -132,11 +134,26 @@ button{font:inherit}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips.surge{animation:surge .35s ease}
 .chip{min-height:44px;padding:8px 16px;border:1.5px solid var(--linha);border-radius:999px;background:var(--cartao);color:var(--tinta);font-weight:500;font-size:var(--t-1);line-height:1.2;font-variant-numeric:tabular-nums;cursor:pointer;transition:transform .15s ease,border-color .15s ease}
-.chip:hover{border-color:var(--tinta);transform:translateY(-1px)}
+@media (hover:hover){.chip:hover{border-color:var(--tinta);transform:translateY(-1px)}}
 .chip[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:var(--fundo)}
 .chip.especial{border-style:dashed;border-color:var(--suave);font-weight:700}
 .chip.especial[aria-pressed="true"]{border-style:solid;border-color:var(--tinta)}
 .vazio{color:var(--suave)}
+.rot{font:700 .75rem/1.3 var(--corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--suave)}
+.areas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:5px;border-radius:999px;background:var(--fundo);border:1.5px solid var(--linha)}
+@media (min-width:620px){.areas{max-width:520px}}
+.chip.area{min-width:0;padding:8px 4px;border-color:transparent;background:transparent;font-weight:700;text-align:center}
+@media (hover:hover){.chip.area:hover{transform:none;border-color:var(--linha)}}
+.chip.area[aria-pressed="true"]{background:var(--pre);border-color:var(--pre);color:var(--sobre-cor)}
+.temas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.temas.surge{animation:surge .35s ease}
+@media (min-width:620px){.temas{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.temas .tile{min-height:58px;align-content:center;padding:10px 14px}
+.temas .tile b{font-size:var(--t-1);overflow-wrap:anywhere}
+.campos{display:grid;gap:14px;min-width:0}
+.campos>h3,.ok h3{font:700 1.0625rem/1.3 var(--titulo);letter-spacing:-.03em}
+.dupla{display:grid;gap:14px}
+@media (min-width:620px){.dupla{grid-template-columns:repeat(2,minmax(0,1fr))}.dupla .campo{max-width:none}}
 .resumo{display:grid;gap:8px}
 .resumo div{display:grid;grid-template-columns:84px minmax(0,1fr);gap:10px;font-size:var(--t-1)}
 .resumo dt{color:var(--suave)}
@@ -145,7 +162,19 @@ button{font:inherit}
 .total small{font:500 .875rem/1.3 var(--corpo);color:var(--suave);letter-spacing:0;margin-left:6px}
 .campo{display:grid;gap:6px;min-width:0;max-width:420px}
 .campo label{font-weight:700;font-size:var(--t-1)}
-.campo input{width:100%;min-height:48px;padding:10px 14px;border:1.5px solid var(--linha);border-radius:12px;background:var(--fundo);color:inherit;font:inherit}
+.campo.larga{max-width:none}
+.campo label small{font-weight:500;color:var(--suave)}
+.campo input,.campo textarea{width:100%;min-height:48px;padding:10px 14px;border:1.5px solid var(--linha);border-radius:12px;background:var(--fundo);color:inherit;font:inherit;font-size:1rem}
+.campo textarea{min-height:92px;line-height:1.45;resize:vertical}
+.pote{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.com-envio #enviar{background:transparent;border-color:var(--tinta);color:var(--tinta)}
+.ok{display:grid;gap:10px;justify-items:center;text-align:center;padding-block:14px;animation:surge .35s ease}
+.ok:focus{outline:none}
+.ok svg{width:64px;height:64px;fill:none;stroke:var(--pre);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ok svg path{stroke-dasharray:30;stroke-dashoffset:30;animation:risca .5s ease .25s forwards}
+@keyframes risca{to{stroke-dashoffset:0}}
+.ok p{max-width:38ch;color:var(--suave)}
+.ok b{color:var(--tinta);font-variant-numeric:tabular-nums;white-space:nowrap}
 .campo ::placeholder{color:var(--suave);opacity:.8}
 .erro{color:var(--erro);font-weight:700;font-size:var(--t-1)}
 .aviso{font-size:.875rem;color:var(--suave)}
@@ -154,6 +183,24 @@ button{font:inherit}
 .linha-resumo b{color:var(--tinta)}
 .direto{max-width:860px;margin:14px auto 0;color:var(--suave);font-size:var(--t-1);text-align:center}
 .direto a{color:var(--tinta);font-weight:700}
+@media (max-width:560px){
+  .abre .acoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+  .abre .acoes .btn{padding-inline:12px}
+  .abre .acoes .btn-sol{grid-column:1/-1}
+  .etapa{min-height:0;padding-block:20px}
+  #tipos .tile{grid-template-columns:minmax(0,1fr) auto;column-gap:10px;align-items:center}
+  #tipos .tile .preco{grid-column:2;grid-row:1/3;font-size:1.125rem;text-align:right}
+  #tipos .tile small{grid-column:1}
+  .mago-pe{padding-block:12px}
+  .linha-resumo{order:-1;flex:0 0 100%;min-width:0;font-size:.8125rem;line-height:1.35}
+  .mago-pe .btn{min-height:48px}
+  #voltar[style*="hidden"]{display:none}
+  #avancar{flex:1}
+  .chip{padding:8px 13px;font-size:.875rem}
+  .chip.area{padding:8px 4px}
+  .campos .acoes{display:grid}
+  .cracha{font-size:.8125rem;padding:9px 14px}
+}
 
 .sobre{overflow:hidden}
 .sobre .wrap{display:grid;gap:clamp(36px,5vw,64px);align-items:center}
@@ -163,7 +210,7 @@ button{font:inherit}
 .linha{font-size:var(--t1);line-height:1.5;max-width:40ch;margin-top:14px;color:var(--suave)}
 .instrumentos{list-style:none;padding:0;margin-top:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:440px}
 .instrumentos li{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid var(--linha);border-radius:16px;background:var(--cartao);font-weight:700;min-width:0;transition:transform .15s ease,border-color .15s ease}
-.instrumentos li:hover{transform:translateY(-2px);border-color:var(--tinta)}
+@media (hover:hover){.instrumentos li:hover{transform:translateY(-2px);border-color:var(--tinta)}}
 .instrumentos svg{width:34px;height:34px;flex:none;stroke:var(--pre);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;animation:balanca 5s ease-in-out infinite}
 .instrumentos li:nth-child(2) svg{stroke:var(--onl);animation-delay:-1.2s}
 .instrumentos li:nth-child(3) svg{animation-delay:-2.4s}
@@ -211,7 +258,14 @@ button{font:inherit}
 .fim .wrap{display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between;padding-block:26px 104px;font-size:var(--t-1)}
 .fim a{color:var(--palco-tinta);font-weight:700;text-decoration:none}
 .fim b{color:var(--palco-tinta);user-select:all;font-variant-numeric:tabular-nums}
-.flutua{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 8px 24px var(--sombra)}
+.flutua{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 8px 24px var(--sombra);transition:transform .25s ease,opacity .25s ease}
+.flutua.some{opacity:0;transform:scale(.6);pointer-events:none}
+@media (max-width:760px){
+  .flutua{width:56px;height:56px;min-height:0;padding:0}
+  .flutua span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .flutua svg{width:26px;height:26px}
+  .fim .wrap{padding-bottom:92px}
+}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -233,14 +287,14 @@ button{font:inherit}
     <div class="wrap">
       <p class="sobret">Presenciais e online</p>
       <h1>Aulas de <span>canto</span></h1>
-      <p class="lead">Com a Hingrid Machado. Do zero, cantando músicas cristãs.</p>
+      <p class="lead">Com a Hingrid Machado. Do zero, cantando músicas cristãs. Também piano, violão e sanfona.</p>
       <button type="button" class="letra" id="letra" aria-label="Cante com fé, expresse sua voz e adoce sua alma. Toque para recomeçar a animação.">
         <span class="mini" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="verso" id="verso" aria-hidden="true"><span class="w">Cante</span> <span class="w">com</span> <span class="w" data-pausa="1">fé,</span> <span class="w">expresse</span> <span class="w">sua</span> <span class="w" data-pausa="1">voz</span> <span class="w">e</span> <span class="w">adoce</span> <span class="w">sua</span> <span class="w">alma.</span></span>
       </button>
       <div class="acoes">
         <a class="btn btn-sol" href="#monte">Montar minha aula</a>
-        <a class="btn btn-palco" data-msg="Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto." href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>Falar com a Hingrid</a>
+        <a class="btn btn-palco" data-msg="Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto." href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
         <a class="btn btn-palco" href="https://www.instagram.com/hingrid27/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
       </div>
     </div>
@@ -264,7 +318,7 @@ button{font:inherit}
   <div class="wrap">
     <div class="centro">
       <h2>Monte sua aula</h2>
-      <p class="intro">Quatro toques e a Hingrid já recebe o pedido pronto.</p>
+      <p class="intro">Escolha a aula, o horário e o tema. A Hingrid recebe o pedido pronto.</p>
     </div>
     <div class="mago" id="mago">
       <ol class="trilha">
@@ -291,32 +345,54 @@ button{font:inherit}
       </div>
 
       <div class="etapa" data-etapa="2" hidden>
-        <h3>O que você quer trabalhar?</h3>
-        <div class="tiles" id="temas"></div>
+        <h3>O que você quer aprender?</h3>
+        <div class="areas" id="areas" role="group" aria-label="Canto ou instrumento"></div>
+        <div class="temas" id="temas" role="group" aria-label="Tema da aula"></div>
+        <p class="rot" id="sub-dica" hidden>Marque o que quer trabalhar</p>
         <div class="chips" id="subtemas" hidden></div>
-        <div class="chips" id="atalhos">
-          <button type="button" class="chip especial" aria-pressed="false" data-modo="zero">Quero começar do zero</button>
-          <button type="button" class="chip especial" aria-pressed="false" data-modo="conversar">Quero conversar antes</button>
+        <div class="chips">
+          <button type="button" class="chip especial" id="conversar" aria-pressed="false">Não sei ainda, quero conversar antes</button>
         </div>
       </div>
 
       <form class="etapa" data-etapa="3" id="pedido" novalidate hidden>
-        <h3>Confira e envie</h3>
-        <dl class="resumo">
-          <div><dt>Aula</dt><dd id="r-aula">—</dd></div>
-          <div><dt>Horário</dt><dd id="r-hora">—</dd></div>
-          <div><dt>Tema</dt><dd id="r-tema">—</dd></div>
-        </dl>
-        <p class="total" id="r-total">A partir de R$ 80<small>por mês</small></p>
-        <div class="campo">
-          <label for="f-nome">Seu nome</label>
-          <input type="text" id="f-nome" autocomplete="name" placeholder="Como você se chama?">
+        <div class="campos" id="pedido-campos">
+          <h3>Confira e envie</h3>
+          <dl class="resumo">
+            <div><dt>Aula</dt><dd id="r-aula">—</dd></div>
+            <div><dt>Horário</dt><dd id="r-hora">—</dd></div>
+            <div><dt>Tema</dt><dd id="r-tema">—</dd></div>
+          </dl>
+          <p class="total" id="r-total">A partir de R$ 80<small>por mês</small></p>
+          <div class="campo larga">
+            <label for="f-desc">Como você quer a sua aula? <small>(opcional)</small></label>
+            <textarea id="f-desc" rows="3" maxlength="600" placeholder="Ex.: vou cantar em um casamento em dezembro e tenho dificuldade nos agudos."></textarea>
+          </div>
+          <div class="dupla">
+            <div class="campo">
+              <label for="f-nome">Seu nome</label>
+              <input type="text" id="f-nome" autocomplete="name" placeholder="Como você se chama?">
+            </div>
+            <div class="campo so-site" hidden>
+              <label for="f-fone">Seu WhatsApp</label>
+              <input type="tel" id="f-fone" autocomplete="tel" inputmode="tel" placeholder="(27) 99999-9999">
+            </div>
+          </div>
+          <div class="pote" aria-hidden="true"><label for="f-site">Não preencha este campo</label><input type="text" id="f-site" tabindex="-1" autocomplete="off"></div>
+          <p class="erro" id="erro" role="alert" hidden></p>
+          <div class="acoes">
+            <button type="button" class="btn btn-1 so-site" id="enviar-site" hidden>Enviar pedido</button>
+            <a class="btn btn-wa" id="enviar" href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>Enviar pelo WhatsApp</a>
+          </div>
+          <p class="aviso so-site" hidden>A Hingrid analisa o pedido e confirma a aula pelo seu WhatsApp.</p>
+          <p class="aviso so-wa">O WhatsApp abre com o pedido pronto. É só enviar. A Hingrid confirma por lá.</p>
         </div>
-        <p class="erro" id="erro" role="alert" hidden></p>
-        <div class="acoes">
-          <a class="btn btn-wa" id="enviar" href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>Enviar pelo WhatsApp</a>
+        <div class="ok" id="pedido-ok" tabindex="-1" hidden>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M14.500 24.500l6.500 6.500 12.500-13.500"/></svg>
+          <h3>Pedido enviado!</h3>
+          <p>A Hingrid vai analisar e confirmar a aula pelo WhatsApp <b id="ok-fone"></b>.</p>
+          <a class="btn btn-2 btn-p" data-msg="Olá, Hingrid! Acabei de enviar um pedido de aula pelo site." href="https://wa.me/5527998929051" target="_blank" rel="noopener">Falar com a Hingrid agora</a>
         </div>
-        <p class="aviso">O WhatsApp abre com o pedido pronto. É só enviar.</p>
       </form>
 
       <div class="mago-pe">
@@ -325,7 +401,7 @@ button{font:inherit}
         <button type="button" class="btn btn-1 btn-p" id="avancar">Continuar</button>
       </div>
     </div>
-    <p class="direto">Prefere explicar com as suas palavras? <a data-msg="Olá, Hingrid! Quero fazer aula de canto e prefiro combinar os detalhes com você." href="https://wa.me/5527998929051" target="_blank" rel="noopener">Converse direto com a Hingrid</a>.</p>
+    <p class="direto">Prefere combinar por mensagem? <a data-msg="Olá, Hingrid! Quero fazer aula e prefiro combinar os detalhes com você." href="https://wa.me/5527998929051" target="_blank" rel="noopener">Converse direto com a Hingrid</a>.</p>
   </div>
 </section>
 
@@ -349,7 +425,7 @@ button{font:inherit}
       <span class="aura" aria-hidden="true"></span><span class="onda" aria-hidden="true"></span><span class="onda o2" aria-hidden="true"></span><span class="onda o3" aria-hidden="true"></span>
       <img class="foto" src="fotos/hingrid-professora.webp" alt="Hingrid Machado" width="851" height="846">
       <span class="nota n1" aria-hidden="true">♪</span><span class="nota n2" aria-hidden="true">♫</span><span class="nota n3" aria-hidden="true">♪</span>
-      <p class="cracha"><b>Hingrid Machado</b>professora de canto</p>
+      <p class="cracha"><b>Hingrid Machado</b>professora de música</p>
     </div>
   </div>
 </section>
@@ -374,16 +450,17 @@ button{font:inherit}
 
 <footer class="fim">
   <div class="wrap">
-    <span>Hingrid Machado · aulas de canto presenciais e online</span>
+    <span>Hingrid Machado · aulas de canto, piano, violão e sanfona · presenciais e online</span>
     <span>WhatsApp <b>(27) 99892-9051</b> · <a href="https://www.instagram.com/hingrid27/" target="_blank" rel="noopener">Instagram @hingrid27</a></span>
   </div>
 </footer>
 
-<a class="btn btn-wa flutua" data-msg="Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto." href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
+<a class="btn btn-wa flutua" aria-label="Falar com a Hingrid no WhatsApp" data-msg="Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto." href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg><span>WhatsApp</span></a>
 <script>
 (function(){
   // ===== Dados para trocar =====
   var WHATSAPP = "5527998929051";   // 55 + DDD + número, só algarismos
+  var ENVIO = "";                   // endereço do Apps Script da planilha de pedidos. Vazio = o pedido vai só pelo WhatsApp.
   var TIPOS = {
     presencial: { rotulo: "Presencial individual", curto: "Presencial", frase: "presencial individual (R$ 120 por mês)", preco: "R$ 120", nota: "por mês",
       dias: [
@@ -401,12 +478,35 @@ button{font:inherit}
       ] },
     grupo: { rotulo: "Em grupo (presencial)", curto: "Em grupo", frase: "em grupo, presencial", preco: "Sob consulta", nota: "", dias: [] }
   };
-  var TEMAS = [
-    { id: "tecnica",  nome: "Técnica vocal",       sub: ["Respiração e apoio", "Afinação", "Agudos e graves", "Potência da voz", "Dicção"] },
-    { id: "louvor",   nome: "Louvor e repertório", sub: ["Hinos", "Louvores para a igreja", "Música para solo", "Achar o tom certo"] },
-    { id: "grupo",    nome: "Cantar em grupo",     sub: ["Segunda voz", "Coral", "Ministério de louvor", "Back vocal"] },
-    { id: "palco",    nome: "Palco e microfone",   sub: ["Uso do microfone", "Vencer a timidez", "Interpretação"] },
-    { id: "cuidados", nome: "Cuidados com a voz",  sub: ["Aquecimento vocal", "Cantar sem cansar", "Rotina de treino"] }
+  // O que a pessoa pode pedir: área > tema > subtemas
+  var AREAS = [
+    { id: "canto", nome: "Canto", temas: [
+      { id: "zero",      nome: "Começar do zero",       sub: ["Respiração e apoio", "Postura para cantar", "Afinação básica", "Perder a vergonha de cantar", "Primeira música completa"] },
+      { id: "tecnica",   nome: "Técnica vocal",         sub: ["Respiração diafragmática", "Afinação e ouvido", "Agudos sem forçar", "Graves com corpo", "Voz de peito, cabeça e mista", "Passagem (quebra da voz)", "Potência e projeção", "Vibrato", "Melismas e ornamentos", "Dicção e articulação"] },
+      { id: "louvor",    nome: "Louvor e ministério",   sub: ["Cantar na igreja", "Conduzir o louvor", "Back vocal", "Segunda voz e harmonia", "Escolher o tom da música", "Hinos e corinhos"] },
+      { id: "palco",     nome: "Interpretação e palco", sub: ["Interpretação e emoção", "Uso do microfone", "Presença de palco", "Nervosismo e timidez", "Cantar com playback ou banda"] },
+      { id: "saude",     nome: "Cuidados com a voz",    sub: ["Aquecimento e desaquecimento", "Cantar sem cansar", "Rotina de treino em casa", "Cuidados antes de cantar"] },
+      { id: "teoria",    nome: "Ritmo e percepção",     sub: ["Ritmo e tempo", "Solfejo básico", "Leitura de cifra", "Harmonia vocal"] },
+      { id: "objetivo",  nome: "Objetivo específico",   sub: ["Preparar uma música para apresentação", "Casamento ou evento", "Gravação", "Teste para coral ou grupo", "Aumentar a extensão vocal", "Cantar e tocar ao mesmo tempo"] }
+    ] },
+    { id: "piano", nome: "Piano", temas: [
+      { id: "zero",     nome: "Começar do zero",  sub: ["Postura e posição das mãos", "Notas e teclas", "Primeiras melodias", "Primeira música completa"] },
+      { id: "acomp",    nome: "Acompanhamento",   sub: ["Acordes e cifras", "Ritmos para louvor", "Tocar e cantar", "Introduções e finais"] },
+      { id: "tecnica",  nome: "Técnica",          sub: ["Escalas e dedilhado", "Independência das mãos", "Leitura de partitura", "Uso do pedal"] },
+      { id: "repert",   nome: "Repertório",       sub: ["Hinos", "Louvores", "Tirar música de ouvido", "Preparar uma música específica"] }
+    ] },
+    { id: "violao", nome: "Violão", temas: [
+      { id: "zero",     nome: "Começar do zero",  sub: ["Afinar o violão", "Primeiros acordes", "Troca de acordes", "Primeira música completa"] },
+      { id: "ritmo",    nome: "Ritmo e batidas",  sub: ["Batidas para louvor", "Dedilhado", "Levadas e variações", "Tocar no tempo"] },
+      { id: "harmonia", nome: "Harmonia",         sub: ["Leitura de cifra", "Pestana", "Mudar o tom da música", "Uso do capotraste"] },
+      { id: "repert",   nome: "Tocar e cantar",   sub: ["Coordenar voz e violão", "Hinos e louvores", "Preparar uma música específica"] }
+    ] },
+    { id: "sanfona", nome: "Sanfona", temas: [
+      { id: "zero",     nome: "Começar do zero",  sub: ["Postura e uso do fole", "Mão direita (teclado)", "Mão esquerda (baixos)", "Primeira música completa"] },
+      { id: "tecnica",  nome: "Técnica",          sub: ["Controle do fole", "Independência das mãos", "Escalas e agilidade"] },
+      { id: "ritmo",    nome: "Ritmos e levadas", sub: ["Ritmos para louvor", "Valsa e ritmos lentos", "Ritmos regionais"] },
+      { id: "repert",   nome: "Repertório",       sub: ["Hinos", "Louvores", "Preparar uma música específica"] }
+    ] }
   ];
 
   function $(id){ return document.getElementById(id); }
@@ -422,8 +522,9 @@ button{font:inherit}
   todos("a[data-msg]").forEach(function(a){ a.href = linkWa(a.dataset.msg); });
 
   // ----- monte sua aula: passo a passo -----
-  var estado = { etapa: 0, tipo: null, dia: "", hora: "", outro: false, tema: null, subs: [], modo: "" };
-  function tema(){ return TEMAS.filter(function(t){ return t.id === estado.tema; })[0] || null; }
+  var estado = { etapa: 0, tipo: null, dia: "", hora: "", outro: false, area: "canto", tema: null, subs: [], conversar: false };
+  function area(){ return AREAS.filter(function(a){ return a.id === estado.area; })[0]; }
+  function tema(){ return area().temas.filter(function(t){ return t.id === estado.tema; })[0] || null; }
 
   function irPara(n, rolar){
     estado.etapa = Math.max(0, Math.min(3, n));
@@ -474,18 +575,31 @@ button{font:inherit}
     var caixa = document.createElement("div"); caixa.className = "chips"; caixa.appendChild(outro); c.appendChild(caixa);
   }
 
-  TEMAS.forEach(function(t){
-    var b = chip("tile", ""), nome = document.createElement("b");
-    nome.textContent = t.nome; b.appendChild(nome); b.dataset.tema = t.id;
+  AREAS.forEach(function(a){
+    var b = chip("chip area", a.nome); b.dataset.area = a.id;
     b.addEventListener("click", function(){
-      estado.tema = estado.tema === t.id ? null : t.id; estado.subs = []; estado.modo = "";
-      desenharSubtemas(); atualizar();
+      estado.area = a.id; estado.tema = null; estado.subs = [];
+      desenharTemas(); desenharSubtemas(); atualizar();
     });
-    $("temas").appendChild(b);
+    $("areas").appendChild(b);
   });
+  function desenharTemas(){
+    var c = $("temas"); c.textContent = "";
+    area().temas.forEach(function(t){
+      var b = chip("tile", ""), nome = document.createElement("b");
+      nome.textContent = t.nome; b.appendChild(nome); b.dataset.tema = t.id;
+      b.addEventListener("click", function(){
+        estado.tema = estado.tema === t.id ? null : t.id; estado.subs = []; estado.conversar = false;
+        desenharSubtemas(); atualizar();
+        if (estado.tema) $("subtemas").scrollIntoView({ behavior: calmo() ? "auto" : "smooth", block: "nearest" });
+      });
+      c.appendChild(b);
+    });
+    c.classList.remove("surge"); void c.offsetWidth; c.classList.add("surge");
+  }
   function desenharSubtemas(){
     var t = tema(), c = $("subtemas");
-    c.textContent = ""; c.hidden = !t;
+    c.textContent = ""; c.hidden = !t; $("sub-dica").hidden = !t;
     if (!t) return;
     t.sub.forEach(function(s){
       var b = chip("chip", s); b.dataset.sub = s;
@@ -498,11 +612,9 @@ button{font:inherit}
     });
     c.classList.remove("surge"); void c.offsetWidth; c.classList.add("surge");
   }
-  todos("#atalhos .chip").forEach(function(b){
-    b.addEventListener("click", function(){
-      estado.modo = estado.modo === b.dataset.modo ? "" : b.dataset.modo; estado.tema = null; estado.subs = [];
-      desenharSubtemas(); atualizar();
-    });
+  $("conversar").addEventListener("click", function(){
+    estado.conversar = !estado.conversar; estado.tema = null; estado.subs = [];
+    desenharSubtemas(); atualizar();
   });
 
   function horaTexto(){
@@ -513,21 +625,20 @@ button{font:inherit}
   }
   function temaTexto(){
     var t = tema();
-    if (estado.modo === "zero") return "Começar do zero";
-    if (estado.modo === "conversar") return "Conversar antes com a Hingrid";
-    if (!t) return "—";
-    return t.nome + (estado.subs.length ? ": " + estado.subs.join(", ") : "");
+    if (estado.conversar) return area().nome + " · conversar antes com a Hingrid";
+    if (!t) return area().nome;
+    return area().nome + " · " + t.nome + (estado.subs.length ? ": " + estado.subs.join(", ") : "");
   }
   function mensagem(){
-    var tp = TIPOS[estado.tipo], t = tema(), nome = $("f-nome").value.trim();
+    var tp = TIPOS[estado.tipo], t = tema(), nome = $("f-nome").value.trim(), desc = $("f-desc").value.trim();
     var l = ["Olá, Hingrid! Meu nome é " + (nome || "[seu nome]") + "."];
-    l.push(tp ? "Quero fazer aula de canto " + tp.frase + "." : "Quero fazer aula de canto.");
+    l.push("Quero fazer aula de " + area().nome.toLowerCase() + (tp ? " " + tp.frase : "") + ".");
     if (estado.tipo === "grupo") l.push("Quero saber o valor e os horários do grupo.");
     else if (estado.hora){ l.push("Horário que prefiro: " + estado.dia + ", " + estado.hora + "."); l.push("Esse horário ainda está livre?"); }
     else if (estado.outro) l.push("Preciso combinar outro horário.");
-    if (estado.modo === "zero") l.push("Quero começar do zero.");
-    else if (estado.modo === "conversar") l.push("Prefiro conversar antes para explicar o que procuro.");
+    if (estado.conversar) l.push("Prefiro conversar antes para explicar o que procuro.");
     else if (t) l.push("Quero trabalhar: " + t.nome + (estado.subs.length ? " (" + estado.subs.join(", ").toLowerCase() + ")" : "") + ".");
+    if (desc) l.push("Como eu quero a aula: " + desc);
     l.push("(Pedido feito pelo site)");
     return l.join("\n");
   }
@@ -545,17 +656,18 @@ button{font:inherit}
       var ligado = b.dataset.outro ? estado.outro : (b.dataset.dia === estado.dia && b.dataset.hora === estado.hora);
       b.setAttribute("aria-pressed", ligado ? "true" : "false");
     });
+    todos("#areas .chip").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.area === estado.area ? "true" : "false"); });
     todos("#temas .tile").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.tema === estado.tema ? "true" : "false"); });
     todos("#subtemas .chip").forEach(function(b){ b.setAttribute("aria-pressed", estado.subs.indexOf(b.dataset.sub) >= 0 ? "true" : "false"); });
-    todos("#atalhos .chip").forEach(function(b){ b.setAttribute("aria-pressed", estado.modo === b.dataset.modo ? "true" : "false"); });
+    $("conversar").setAttribute("aria-pressed", estado.conversar ? "true" : "false");
 
     var partes = [];
     if (tp) partes.push(tp.curto + (tp.nota ? " · " + tp.preco + " " + tp.nota : ""));
     if (horaTexto() !== "—" && estado.tipo !== "grupo") partes.push(horaTexto());
-    if (temaTexto() !== "—") partes.push(estado.modo ? temaTexto() : t.nome);
-    var linha = $("linha-resumo"); linha.textContent = "";
-    if (partes.length){ var forte = document.createElement("b"); forte.textContent = partes.join("  ·  "); linha.appendChild(forte); }
-    else linha.textContent = "Nada escolhido ainda.";
+    partes.push(area().nome + (t ? " · " + t.nome : ""));
+    var linha = $("linha-resumo"), forte = document.createElement("b");
+    linha.textContent = ""; forte.textContent = partes.join("  ·  "); linha.appendChild(forte);
+    linha.hidden = estado.etapa === 3;   // no último passo o resumo completo já está na tela
 
     $("r-aula").textContent = tp ? tp.rotulo : "—";
     $("r-hora").textContent = horaTexto();
@@ -567,14 +679,64 @@ button{font:inherit}
     if (tp && $("f-nome").value.trim()) $("erro").hidden = true;
   }
   function erro(texto){ var e = $("erro"); e.textContent = texto; e.hidden = false; }
+  function fone(){
+    var bruto = $("f-fone").value.trim(), n = bruto.replace(/\D/g, "");
+    if (bruto.charAt(0) !== "+" && n.length <= 11) n = "55" + n;   // sem código do país: assume Brasil
+    return n;
+  }
+  function foneOk(){
+    var bruto = $("f-fone").value.trim(), n = bruto.replace(/\D/g, "").length;
+    return bruto.charAt(0) === "+" ? (n >= 10 && n <= 15) : (n >= 10 && n <= 13);
+  }
+  function faltando(precisaFone){
+    if (!estado.tipo) return "Volte ao passo 1 e escolha o tipo de aula.";
+    if (!$("f-nome").value.trim()){ $("f-nome").focus(); return "Escreva seu nome para a Hingrid saber quem é."; }
+    if (precisaFone && !foneOk()){ $("f-fone").focus(); return "Informe seu WhatsApp com DDD para a Hingrid confirmar a aula."; }
+    return "";
+  }
 
   $("pedido").addEventListener("input", atualizar);
   $("pedido").addEventListener("submit", function(e){ e.preventDefault(); });
   $("enviar").addEventListener("click", function(e){
-    if (!estado.tipo){ e.preventDefault(); erro("Volte ao passo 1 e escolha o tipo de aula."); return; }
-    if (!$("f-nome").value.trim()){ e.preventDefault(); erro("Escreva seu nome para a Hingrid saber quem é."); $("f-nome").focus(); }
+    var falta = faltando(false);
+    if (falta){ e.preventDefault(); erro(falta); }
   });
-  desenharHoras(); desenharSubtemas(); irPara(0, false);
+  // envio direto pelo site (planilha de pedidos), quando o endereço estiver configurado
+  todos(".so-site").forEach(function(el){ el.hidden = !ENVIO; });
+  todos(".so-wa").forEach(function(el){ el.hidden = !!ENVIO; });
+  $("pedido").classList.toggle("com-envio", !!ENVIO);
+  $("enviar-site").addEventListener("click", function(){
+    var falta = faltando(true), botao = $("enviar-site");
+    if (falta){ erro(falta); return; }
+    $("erro").hidden = true; botao.disabled = true; botao.textContent = "Enviando…";
+    fetch(ENVIO, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ site: "hingrid", nome: $("f-nome").value.trim(), whatsapp: fone(), aula: TIPOS[estado.tipo].rotulo,
+        horario: horaTexto(), tema: temaTexto(), descricao: $("f-desc").value.trim(),
+        valor: TIPOS[estado.tipo].preco + (TIPOS[estado.tipo].nota ? " " + TIPOS[estado.tipo].nota : ""), hp: $("f-site").value }) })
+    .then(function(){
+      $("pedido-campos").hidden = true; $("pedido-ok").hidden = false;
+      $("ok-fone").textContent = $("f-fone").value.trim();
+      document.querySelector(".mago-pe").hidden = true; $("pedido-ok").focus();
+    })
+    .catch(function(){
+      botao.disabled = false; botao.textContent = "Enviar pedido";
+      erro("Não foi possível enviar agora. Tente de novo ou use o botão do WhatsApp.");
+    });
+  });
+  desenharHoras(); desenharTemas(); desenharSubtemas(); irPara(0, false);
+
+  // ----- WhatsApp flutuante: some enquanto já existe um botão de WhatsApp na tela -----
+  var flutua = document.querySelector(".flutua"), naTela = {};
+  if ("IntersectionObserver" in window){
+    var olho = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){ naTela[en.target.dataset.olho] = en.isIntersecting; });
+      var estreito = window.matchMedia("(max-width: 760px)").matches;
+      flutua.classList.toggle("some", !!(naTela.topo || (estreito && (naTela.mago || naTela.bot))));
+    }, { threshold: 0.15 });
+    [[".abre .acoes", "topo"], ["#mago", "mago"], [".bot", "bot"]].forEach(function(par){
+      var el = document.querySelector(par[0]); el.dataset.olho = par[1]; olho.observe(el);
+    });
+  }
 
   // ----- equalizador no chão do palco -----
   var eq = $("eq");
@@ -615,19 +777,22 @@ button{font:inherit}
     { q: "Tem aula em grupo?", k: /grupo|dupla|turma|junto|amig/,
       r: "Tem aula em grupo, presencial. O valor e o horário a Hingrid combina pelo WhatsApp.",
       wa: "Olá, Hingrid! Quero saber o valor e os horários da aula de canto em grupo (presencial).", rot: "Perguntar no WhatsApp" },
-    { q: "O que eu aprendo?", k: /aprend|tema|conteudo|tecnica|respira|afina|agudo|microfone|timidez/,
-      r: "Você escolhe o que quer trabalhar: técnica vocal, louvor e repertório, cantar em grupo, palco e microfone ou cuidados com a voz. Também dá para começar do zero.",
+    { q: "Tem aula de instrumento?", k: /piano|teclado|violao|sanfona|acordeon|instrument|tocar/,
+      r: "Além de canto, dá para pedir aula de piano, violão e sanfona. Em Monte sua aula você escolhe o instrumento e o tema.",
+      ir: "#monte", rot: "Escolher o tema" },
+    { q: "O que eu aprendo?", k: /aprend|tema|conteudo|tecnica|respira|afina|agudo|microfone|timidez|vibrato/,
+      r: "Você escolhe: começar do zero, técnica vocal, louvor e ministério, interpretação e palco, cuidados com a voz, ritmo e percepção ou um objetivo específico. E pode descrever do seu jeito o que procura.",
       ir: "#monte", rot: "Escolher o tema" },
     { q: "Que músicas vou cantar?", k: /musica|repert|estilo|gospel|louvor|crist|igreja|hino/,
       r: "O repertório das aulas é de músicas cristãs." },
     { q: "Nunca cantei. Posso?", k: /nunca|zero|iniciante|sei cantar|desafin/,
       r: "Pode! As aulas começam do zero, não precisa ter experiência." },
     { q: "Como eu começo?", k: /comec|marcar|agendar|matricul|inscri/,
-      r: "Monte sua aula em quatro toques e envie o pedido. A Hingrid confirma pelo WhatsApp.",
+      r: "Monte sua aula: escolha o tipo, o horário e o tema, e envie o pedido. A Hingrid confirma pelo WhatsApp.",
       ir: "#monte", rot: "Montar minha aula" },
     { q: "Onde é a aula?", k: /onde|endereco|local|cidade|bairro|presencial|online|video/,
       r: "As aulas são presenciais ou online. O endereço da aula presencial a Hingrid passa pelo WhatsApp.",
-      wa: "Olá, Hingrid! Onde são as aulas de canto presenciais?", rot: "Perguntar o endereço" }
+      wa: "Olá, Hingrid! Onde são as aulas presenciais?", rot: "Perguntar o endereço" }
   ];
   var BOT_NOME = "Hingrid", conversa = $("bot-conversa");
   function semAcento(s){ return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
