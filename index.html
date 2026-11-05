@@ -13,32 +13,37 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Unbounded:wght@500;600;700;800&display=swap">
 <style>
-/* Layout: o topo é um palco azul, com tudo centralizado, notas subindo devagar ao fundo, as letras de "canto"
-   ondulando, a letra do lema acendendo palavra por palavra e um equalizador subindo do chão. Os fatos da aula ficam em
-   cartões que invadem o palco. O "monte sua aula" é um passo a passo de quatro etapas, uma por vez; cada escolha solta
-   uma nota. Azul marca a aula presencial, ciano marca a online; o amarelo fica só para o que é ação.
+/* Layout: o topo é um palco azul-marinho, com tudo centralizado, notas subindo devagar ao fundo, as letras de
+   "canto" ondulando, a letra do lema acendendo palavra por palavra e um equalizador subindo do chão. Os fatos da aula
+   ficam em cartões que invadem o palco. O "monte sua aula" é um passo a passo de quatro etapas, uma por vez; cada
+   escolha solta uma nota.
+   Cor: tudo em azul. Marinho no palco e na tinta, azul-royal para a aula presencial, azul-cerúleo para a online e um
+   azul-claro luminoso para o que é ação. O brilho aparece só em quatro pontos: a luz do palco, a palavra "canto",
+   o botão principal e a aura da foto.
    No celular: botões do topo em grade, trilha com número em cima do nome, rodapé do passo a passo com o resumo
    em cima e os dois botões embaixo, e o WhatsApp flutuante vira só o ícone. */
 :root{
-  --fundo:#F1F6FE; --cartao:#FFFFFF; --tinta:#0E1B3D; --suave:#52607F; --linha:#D5E0F3;
-  --pre:#1D4FD7; --onl:#0E7490; --sobre-cor:#FFFFFF;
-  --palco:#14327A; --palco-tinta:#F2F6FF; --palco-suave:#B9CCF5; --ceu:#8CC8FF; --aura:#86B6FF;
-  --sol:#FFC94D; --sol-tinta:#2A1E00;
-  --wa:#25D366; --wa-tinta:#06301A; --erro:#B3261E; --sombra:rgba(14,27,61,.14);
+  --fundo:#F1F6FE; --cartao:#FFFFFF; --tinta:#0B1838; --suave:#4F5D7D; --linha:#D3DFF3;
+  --pre:#1D4FD7; --onl:#0B6BB8; --sobre-cor:#FFFFFF;
+  --palco:#0E2664; --palco-tinta:#F2F6FF; --palco-suave:#B6C9F2; --ceu:#8CC8FF; --anil:#4F8AF5; --aura:#86B6FF;
+  --luz:#A3D4FF; --luz-tinta:#061C4A; --brilho:rgba(104,160,255,.42); --halo:rgba(140,200,255,.5);
+  --erro:#B3261E; --sombra:rgba(11,24,56,.14);
   --titulo:"Unbounded","Trebuchet MS","Segoe UI",system-ui,sans-serif;
   --corpo:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
   --t-1:.9375rem; --t0:1.0625rem; --t1:1.1875rem;
   --t3:clamp(1.5rem,2.2vw + .9rem,2.125rem); --t4:clamp(2.25rem,6vw + .8rem,4.75rem);
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --fundo:#0A1022; --cartao:#131B36; --tinta:#EEF2FC; --suave:#A9B6D6; --linha:#273459;
-  --pre:#7DA6FF; --onl:#5FD4E8; --sobre-cor:#0A1022;
-  --palco:#0F2257; --palco-tinta:#F2F6FF; --palco-suave:#AFC3EE; --ceu:#7FBBF5; --aura:#2A4CA6;
+  --fundo:#080E20; --cartao:#111A35; --tinta:#EEF2FC; --suave:#A9B6D6; --linha:#253258;
+  --pre:#7DA6FF; --onl:#6CC3F5; --sobre-cor:#080E20;
+  --palco:#0B1C4C; --palco-tinta:#F2F6FF; --palco-suave:#AFC3EE; --ceu:#7FBBF5; --anil:#3F74E0; --aura:#2A4CA6;
+  --brilho:rgba(84,132,240,.4); --halo:rgba(130,190,255,.42);
   --erro:#FF8A80; --sombra:rgba(0,0,0,.45); color-scheme:dark } }
 :root[data-theme="dark"]{
-  --fundo:#0A1022; --cartao:#131B36; --tinta:#EEF2FC; --suave:#A9B6D6; --linha:#273459;
-  --pre:#7DA6FF; --onl:#5FD4E8; --sobre-cor:#0A1022;
-  --palco:#0F2257; --palco-tinta:#F2F6FF; --palco-suave:#AFC3EE; --ceu:#7FBBF5; --aura:#2A4CA6;
+  --fundo:#080E20; --cartao:#111A35; --tinta:#EEF2FC; --suave:#A9B6D6; --linha:#253258;
+  --pre:#7DA6FF; --onl:#6CC3F5; --sobre-cor:#080E20;
+  --palco:#0B1C4C; --palco-tinta:#F2F6FF; --palco-suave:#AFC3EE; --ceu:#7FBBF5; --anil:#3F74E0; --aura:#2A4CA6;
+  --brilho:rgba(84,132,240,.4); --halo:rgba(130,190,255,.42);
   --erro:#FF8A80; --sombra:rgba(0,0,0,.45); color-scheme:dark }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -50,32 +55,32 @@ a{color:inherit}
 button,input,textarea{font:inherit}
 .wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 :focus-visible{outline:3px solid var(--pre);outline-offset:3px;border-radius:6px}
-.palco :focus-visible,.fim :focus-visible{outline-color:var(--sol)}
+.palco :focus-visible,.fim :focus-visible{outline-color:var(--luz)}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:13px 22px;border-radius:999px;font:700 1rem/1.15 var(--corpo);text-decoration:none;text-align:center;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease}
 @media (hover:hover){.btn:hover{transform:translateY(-2px)}}
 .btn svg{flex:none}
 .btn-1{background:var(--tinta);color:var(--fundo)}
 .btn-2{border-color:var(--tinta);background:transparent;color:var(--tinta)}
-.btn-sol{background:var(--sol);color:var(--sol-tinta)}
+.btn-luz{background:var(--luz);color:var(--luz-tinta);box-shadow:0 8px 30px var(--halo)}
 .btn-palco{border-color:var(--palco-suave);background:transparent;color:var(--palco-tinta)}
-.btn-wa{background:var(--wa);color:var(--wa-tinta)}
+.btn-wa{background:var(--pre);color:var(--sobre-cor)}
 .btn-p{min-height:44px;padding:10px 16px;font-size:var(--t-1)}
 .acoes{display:flex;flex-wrap:wrap;gap:10px}
 
-.palco{position:relative;overflow:hidden;background:var(--palco);color:var(--palco-tinta)}
+.palco{position:relative;overflow:hidden;background:radial-gradient(110% 68% at 50% -8%,var(--brilho),transparent 62%),var(--palco);color:var(--palco-tinta)}
 .topo .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px 16px;padding-block:16px;flex-wrap:wrap}
 .marca{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--titulo);letter-spacing:-.02em;text-decoration:none}
-.marca svg{width:30px;height:30px;flex:none;color:var(--sol)}
+.marca svg{width:30px;height:30px;flex:none;color:var(--luz)}
 .menu{display:flex;align-items:center;gap:8px clamp(14px,2.2vw,26px);flex-wrap:wrap;font-weight:600;font-size:var(--t-1)}
 .menu a{text-decoration:none}
-@media (hover:hover){.menu a:not(.btn):hover{color:var(--sol)}}
+@media (hover:hover){.menu a:not(.btn):hover{color:var(--luz)}}
 @media (max-width:760px){.menu a:not(.btn){display:none}}
 
 .abre .wrap{display:grid;justify-items:center;text-align:center;padding-block:clamp(24px,5vw,60px) 0}
-.sobret{font:700 .8125rem/1.3 var(--corpo);letter-spacing:.2em;text-transform:uppercase;color:var(--sol)}
+.sobret{font:700 .8125rem/1.3 var(--corpo);letter-spacing:.2em;text-transform:uppercase;color:var(--luz)}
 .abre h1{font:800 var(--t4)/1 var(--titulo);letter-spacing:-.045em;margin-top:14px}
-.canta{color:var(--sol);white-space:nowrap}
+.canta{color:var(--luz);white-space:nowrap;text-shadow:0 0 30px var(--halo)}
 .canta i{display:inline-block;font-style:normal;animation:ondula 3.6s ease-in-out infinite}
 .canta i:nth-child(2){animation-delay:.18s}
 .canta i:nth-child(3){animation-delay:.36s}
@@ -98,15 +103,15 @@ button,input,textarea{font:inherit}
 .letra{display:inline-flex;align-items:center;gap:12px;max-width:100%;margin-top:26px;padding:12px 20px;border:1.5px solid var(--palco-suave);border-radius:22px;background:transparent;color:inherit;font:600 var(--t1)/1.35 var(--corpo);text-align:left;cursor:pointer}
 .verso .w{display:inline-block;transition:color .5s ease,opacity .5s ease,transform .5s ease}
 .verso.tocando .w{opacity:.5}
-.verso.tocando .w.on{opacity:1;color:var(--sol);transform:translateY(-1px)}
+.verso.tocando .w.on{opacity:1;color:var(--luz);transform:translateY(-1px)}
 .mini{display:inline-flex;align-items:center;gap:3px;height:20px;flex:none}
-.mini i{display:block;width:4px;height:100%;border-radius:999px;background:var(--sol);transform:scaleY(.5);animation:eq 2.4s ease-in-out infinite}
+.mini i{display:block;width:4px;height:100%;border-radius:999px;background:var(--luz);transform:scaleY(.5);animation:eq 2.4s ease-in-out infinite}
 .mini i:nth-child(2){animation-delay:-.8s}
 .mini i:nth-child(3){animation-delay:-1.6s}
 .abre .acoes{justify-content:center;margin-top:26px}
 .eq{display:grid;grid-auto-flow:column;grid-auto-columns:8px;gap:6px;justify-content:center;align-items:end;height:150px;margin-top:clamp(20px,3vw,32px);overflow:hidden}
 .eq i{display:block;height:100%;border-radius:6px 6px 0 0;background:var(--ceu);transform-origin:bottom;transform:scaleY(.08);will-change:transform}
-.eq i:nth-child(4n){background:var(--sol)}
+.eq i:nth-child(4n){background:var(--anil)}
 @keyframes eq{0%,100%{transform:scaleY(calc(var(--h,1)*.38))}50%{transform:scaleY(var(--h,1))}}
 
 .fatos{position:relative;z-index:1;margin-top:-40px}
@@ -209,7 +214,7 @@ button,input,textarea{font:inherit}
 @media (max-width:560px){
   .abre .acoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
   .abre .acoes .btn{padding-inline:12px}
-  .abre .acoes .btn-sol{grid-column:1/-1}
+  .abre .acoes .btn-luz{grid-column:1/-1}
   .etapa{min-height:0;padding-block:20px}
   #tipos .tile{grid-template-columns:minmax(0,1fr) auto;column-gap:10px;align-items:center}
   #tipos .tile .preco{grid-column:2;grid-row:1/3;font-size:1.125rem;text-align:right}
@@ -259,7 +264,7 @@ button,input,textarea{font:inherit}
 .bot{max-width:720px;margin:24px auto 0;border:1.5px solid var(--tinta);border-radius:24px;background:var(--cartao);box-shadow:0 14px 34px var(--sombra);overflow:hidden;text-align:left}
 .bot-topo{display:flex;align-items:center;gap:4px 10px;flex-wrap:wrap;padding:14px 18px;border-bottom:1.5px solid var(--linha);font-size:var(--t-1)}
 .bot-topo span:last-child{color:var(--suave)}
-.bot-luz{width:10px;height:10px;border-radius:50%;background:var(--wa);animation:pisca 1.6s ease-in-out infinite}
+.bot-luz{width:10px;height:10px;border-radius:50%;background:var(--pre);animation:pisca 1.6s ease-in-out infinite}
 @keyframes pisca{50%{opacity:.3}}
 .bot-conversa{display:flex;flex-direction:column;gap:10px;padding:18px;min-height:110px;max-height:340px;overflow-y:auto;overscroll-behavior:contain}
 .msg{max-width:86%;padding:10px 14px;border-radius:16px;line-height:1.45;overflow-wrap:anywhere;animation:surge .3s ease}
@@ -301,7 +306,7 @@ button,input,textarea{font:inherit}
         <a href="#monte">Monte sua aula</a>
         <a href="#sobre">Sobre</a>
         <a href="#duvidas">Dúvidas</a>
-        <a class="btn btn-sol btn-p" href="#monte">Marcar aula</a>
+        <a class="btn btn-luz btn-p" href="#monte">Marcar aula</a>
       </nav>
     </div>
   </header>
@@ -316,7 +321,7 @@ button,input,textarea{font:inherit}
         <span class="verso" id="verso" aria-hidden="true"><span class="w">Cante</span> <span class="w">com</span> <span class="w" data-pausa="1">fé,</span> <span class="w">expresse</span> <span class="w">sua</span> <span class="w" data-pausa="1">voz</span> <span class="w">e</span> <span class="w">adoce</span> <span class="w">sua</span> <span class="w">alma.</span></span>
       </button>
       <div class="acoes">
-        <a class="btn btn-sol" href="#monte">Montar minha aula</a>
+        <a class="btn btn-luz" href="#monte">Montar minha aula</a>
         <a class="btn btn-palco" data-msg="Olá, Hingrid! Vim pelo site e quero saber mais sobre as aulas de canto." href="https://wa.me/5527998929051" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>WhatsApp</a>
         <a class="btn btn-palco" href="https://www.instagram.com/hingrid_machadocanto/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
       </div>
