@@ -104,8 +104,8 @@ button,input,textarea{font:inherit}
 .mini i:nth-child(2){animation-delay:-.8s}
 .mini i:nth-child(3){animation-delay:-1.6s}
 .abre .acoes{justify-content:center;margin-top:26px}
-.eq{display:grid;grid-auto-flow:column;grid-auto-columns:8px;gap:6px;justify-content:center;align-items:end;height:120px;margin-top:clamp(28px,4vw,44px);overflow:hidden}
-.eq i{display:block;height:100%;border-radius:6px 6px 0 0;background:var(--ceu);transform-origin:bottom;transform:scaleY(var(--h,.5));animation:eq var(--d,1s) ease-in-out var(--a,0s) infinite}
+.eq{display:grid;grid-auto-flow:column;grid-auto-columns:8px;gap:6px;justify-content:center;align-items:end;height:150px;margin-top:clamp(20px,3vw,32px);overflow:hidden}
+.eq i{display:block;height:100%;border-radius:6px 6px 0 0;background:var(--ceu);transform-origin:bottom;transform:scaleY(.08);will-change:transform}
 .eq i:nth-child(4n){background:var(--sol)}
 @keyframes eq{0%,100%{transform:scaleY(calc(var(--h,1)*.38))}50%{transform:scaleY(var(--h,1))}}
 
@@ -745,16 +745,62 @@ button,input,textarea{font:inherit}
     n.addEventListener("animationend", function(){ n.remove(); });
   });
 
-  // ----- equalizador no chão do palco -----
-  var eq = $("eq");
+  // ----- equalizador no chão do palco: espectro de uma música tocando -----
+  // Não é uma onda: cada faixa de frequência reage a um "instrumento". Graves no centro (bumbo e baixo), médios com
+  // acordes e a melodia da voz (com vibrato), agudos nas pontas (prato). Sobe rápido e desce devagar, como num analisador de verdade.
+  var eq = $("eq"), barras = [], nivel = [], tremor = [];
   for (var i = 0; i < 150; i++){
     var barra = document.createElement("i");
-    // onda lenta que atravessa o palco, no andamento de um jazz: todas as barras no mesmo compasso, cada uma um pouco atrasada
-    var altura = 0.35 + 0.65 * Math.abs(Math.sin(i * 0.07));
-    barra.style.setProperty("--h", altura.toFixed(2));
-    barra.style.setProperty("--d", "4.6s");
-    barra.style.setProperty("--a", (-(i * 0.12)).toFixed(2) + "s");
-    eq.appendChild(barra);
+    eq.appendChild(barra); barras.push(barra); nivel.push(0.08); tremor.push(1);
+  }
+  var BATIDA = 60 / 84;   // andamento de jazz tranquilo, 84 bpm
+  var som = { batida: -1, meia: -1, baixo: 0.1, acorde: [0.3, 0.4, 0.5], acordeEm: -9, melodia: 0.5, melodiaEm: -9, cantando: true, pratoEm: -9, bumbo: 0.4 };
+  function sino(x, centro, largura){ var d = (x - centro) / largura; return Math.exp(-d * d); }
+  function tocar(t){
+    var tb = t / BATIDA, b = Math.floor(tb), meia = Math.floor(tb * 2), dentro = (tb - b) * BATIDA;
+    if (b !== som.batida){            // a cada tempo: nota nova no baixo, bumbo nos tempos 1 e 3, prato, às vezes um acorde
+      som.batida = b;
+      som.baixo = 0.07 + Math.random() * 0.13;
+      som.bumbo = b % 2 === 0 ? 0.9 : 0.3;
+      som.pratoEm = t;
+      if (Math.random() < 0.4){ var base = 0.26 + Math.random() * 0.16; som.acorde = [base, base + 0.09, base + 0.17]; som.acordeEm = t; }
+    }
+    if (meia !== som.meia){           // a cada meio tempo: a voz troca de nota, segura ou respira; prato suingado no contratempo
+      som.meia = meia;
+      var r = Math.random();
+      if (r < 0.18) som.cantando = false;
+      else if (r < 0.7){ som.cantando = true; som.melodia = Math.min(0.78, Math.max(0.36, som.melodia + (Math.random() - 0.5) * 0.2)); som.melodiaEm = t; }
+      if (meia % 2 === 1 && b % 2 === 1){ som.pratoEm = t - 0.08; if (Math.random() < 0.3){ som.acordeEm = t; } }
+    }
+    var bumbo = som.bumbo * Math.exp(-dentro * 7), baixo = Math.exp(-dentro * 2.4);
+    var acorde = Math.exp(-(t - som.acordeEm) * 2.6), prato = Math.exp(-(t - som.pratoEm) * 8);
+    var voz = som.cantando ? (0.6 + 0.4 * Math.exp(-(t - som.melodiaEm) * 2.2)) * (1 + 0.1 * Math.sin(t * 34)) : 0;
+    var metade = Math.max(8, Math.ceil(eq.clientWidth / 14 / 2)), centro = (barras.length - 1) / 2;
+    for (var k = 0; k < barras.length; k++){
+      var dist = Math.abs(k - centro);
+      if (dist > metade + 1) continue;                    // fora da tela
+      var f = Math.min(1, dist / metade);
+      var a = (0.4 - 0.26 * f) * (0.55 + 0.5 * bumbo + 0.3 * baixo + 0.2 * voz);   // corpo da música: mais energia nos graves, respira com a batida
+      a += bumbo * 0.5 * sino(f, 0, 0.12);
+      a += baixo * (0.42 * sino(f, som.baixo, 0.07) + 0.18 * sino(f, som.baixo * 2, 0.06));
+      a += acorde * 0.3 * (sino(f, som.acorde[0], 0.05) + sino(f, som.acorde[1], 0.05) + sino(f, som.acorde[2], 0.05));
+      a += voz * (0.42 * sino(f, som.melodia, 0.06) + 0.16 * sino(f, Math.min(0.97, som.melodia * 1.5), 0.05));
+      a += prato * 0.26 * sino(f, 0.9, 0.2);
+      tremor[k] += (0.4 + Math.random() * 1.2 - tremor[k]) * 0.3;          // cada barra treme por conta própria, como num analisador
+      a = Math.min(1, Math.max(0.06, a * tremor[k]));
+      nivel[k] += (a - nivel[k]) * (a > nivel[k] ? 0.5 : 0.1);        // ataque rápido, queda lenta
+      barras[k].style.transform = "scaleY(" + (0.16 + 0.84 * nivel[k]).toFixed(3) + ")";
+    }
+  }
+  if (calmo()){
+    barras.forEach(function(b, k){ b.style.transform = "scaleY(" + (0.3 + 0.5 * sino(Math.abs(k - 74.5) / 40, 0.1, 0.5) * (0.7 + 0.3 * Math.abs(Math.sin(k * 1.7)))).toFixed(2) + ")"; });
+  } else {
+    var eqVisivel = true, ultimo = 0;
+    if ("IntersectionObserver" in window) new IntersectionObserver(function(en){ eqVisivel = en[0].isIntersecting; }).observe(eq);
+    (function quadro(agora){
+      if (eqVisivel && !document.hidden && agora - ultimo > 30){ ultimo = agora; tocar(agora / 1000); }   // ~30 quadros por segundo, só quando aparece
+      requestAnimationFrame(quadro);
+    })(0);
   }
 
   // ----- a letra do lema acende palavra por palavra -----
