@@ -413,8 +413,8 @@ button,input,textarea{font:inherit}
           <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M14.500 24.500l6.500 6.500 12.500-13.500"/></svg>
           <span class="festa" aria-hidden="true"><i>♪</i><i>♫</i><i>♪</i></span>
           <h3>Pedido enviado!</h3>
-          <p>A Hingrid vai analisar e confirmar a aula pelo WhatsApp <b id="ok-fone"></b>.</p>
-          <a class="btn btn-2 btn-p" data-msg="Olá, Hingrid! Acabei de enviar um pedido de aula pelo site." href="https://wa.me/5527998929051" target="_blank" rel="noopener">Falar com a Hingrid agora</a>
+          <p>A Hingrid vai analisar e confirmar a aula pelo WhatsApp <b id="ok-fone"></b>. Para adiantar, avise que o pedido chegou.</p>
+          <a class="btn btn-wa" id="ok-wa" data-msg="Olá, Hingrid! Acabei de enviar um pedido de aula pelo site." href="https://wa.me/5527998929051" target="_blank" rel="noopener">Avisar a Hingrid no WhatsApp</a>
         </div>
       </form>
 
@@ -483,7 +483,7 @@ button,input,textarea{font:inherit}
 (function(){
   // ===== Dados para trocar =====
   var WHATSAPP = "5527998929051";   // 55 + DDD + número, só algarismos
-  var ENVIO = "";                   // endereço do Apps Script da planilha de pedidos. Vazio = o pedido vai só pelo WhatsApp.
+  var ENVIO = "https://script.google.com/macros/s/AKfycby96d5CS6McoOxB2XAdmsso21zuB2dxuRliJxIZGYfLSm5nNpATYxnFvL83UqSH0b0/exec";                   // endereço do Apps Script da planilha de pedidos. Vazio = o pedido vai só pelo WhatsApp.
   var TIPOS = {
     presencial: { rotulo: "Presencial individual", curto: "Presencial", frase: "presencial individual (R$ 120 por mês)", preco: "R$ 120", nota: "por mês",
       dias: [
@@ -709,6 +709,7 @@ button,input,textarea{font:inherit}
     .then(function(){
       $("pedido-campos").hidden = true; $("pedido-ok").hidden = false;
       $("ok-fone").textContent = $("f-fone").value.trim();
+      $("ok-wa").href = linkWa("Olá, Hingrid! Acabei de enviar um pedido de aula pelo site. Meu nome é " + $("f-nome").value.trim() + ".");
       document.querySelector(".mago-pe").hidden = true; $("pedido-ok").focus();
     })
     .catch(function(){
